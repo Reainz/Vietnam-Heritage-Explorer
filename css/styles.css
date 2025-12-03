@@ -1,0 +1,1061 @@
+/* Ensure numbers in hero stats are white */
+.hero-stats h3 {
+    color: #fff !important;
+}
+/* Custom Styles for Vietnam Heritage Explorer */
+
+:root {
+    --primary-color: #8B2635;      /* Deep Vietnamese red - traditional lacquer red */
+    --secondary-color: #D4AF37;    /* Golden yellow - temple gold */
+    --success-color: #2D5016;      /* Deep forest green - bamboo green */
+    --info-color: #5D4E37;         /* Warm brown - traditional wood */
+    --warning-color: #D4AF37;      /* Golden yellow - consistent with secondary */
+    --danger-color: #8B2635;       /* Same as primary for consistency */
+    --dark-color: #2C1810;         /* Rich dark brown - traditional dark wood */
+    --light-color: #FAF7F0;        /* Warm cream - traditional paper/silk */
+    --accent-color: #B8860B;       /* Antique gold - traditional ornaments */
+}
+
+/* Global Styles */
+body {
+    font-family: 'Crimson Text', 'Times New Roman', serif; /* More elegant, traditional feel */
+    line-height: 1.6;
+    padding-top: 76px; /* Account for fixed navbar */
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(139, 38, 53, 0.03) 1px, transparent 0);
+    background-size: 20px 20px;
+}
+
+/* Vietnamese traditional pattern overlay for special sections */
+.traditional-pattern {
+    position: relative;
+}
+
+.traditional-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(45deg, transparent 25%, rgba(212, 175, 55, 0.05) 25%, rgba(212, 175, 55, 0.05) 50%, transparent 50%, transparent 75%, rgba(212, 175, 55, 0.05) 75%);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, rgba(139, 38, 53, 0.85), rgba(212, 175, 55, 0.75)),
+                url('https://images.unsplash.com/photo-1528127269322-539801943592?w=1920&h=1080&fit=crop') center/cover;
+    min-height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+}
+
+.hero-stats {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar {
+    backdrop-filter: blur(10px);
+    background-color: rgba(139, 38, 53, 0.95) !important;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+/* Featured Cards */
+.featured-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.featured-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+}
+
+/* Feature Icons */
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 80vh;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        margin-top: 2rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Page Load Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Vietnamese Cultural Lantern Animation */
+@keyframes lanternGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    }
+}
+
+@keyframes lanternFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Dragon Wave Animation (for borders) */
+@keyframes dragonWave {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Vietnamese Text Writing Effect */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blinkCursor {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: var(--primary-color);
+    }
+}
+
+/* Scroll-based animations */
+.animate-on-scroll {
+    opacity: 1; /* Show by default */
+    transform: translateY(0);
+    transition: all 0.8s ease-out;
+}
+
+/* Only hide if animations are supported */
+.js-animations-supported .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.animate-on-scroll.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-slide-left {
+    opacity: 1; /* Show by default */
+    transform: translateX(0);
+    transition: all 0.8s ease-out;
+}
+
+.js-animations-supported .animate-slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.animate-slide-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-slide-right {
+    opacity: 1; /* Show by default */
+    transform: translateX(0);
+    transition: all 0.8s ease-out;
+}
+
+.js-animations-supported .animate-slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.animate-slide-right.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-scale {
+    opacity: 1; /* Show by default */
+    transform: scale(1);
+    transition: all 0.8s ease-out;
+}
+
+.js-animations-supported .animate-scale {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.animate-scale.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Enhanced Card Animations */
+.card-enhanced {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center bottom;
+}
+
+.card-enhanced:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Feature Icon Animations */
+.feature-icon-enhanced {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-icon-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.feature-icon-enhanced:hover::before {
+    left: 100%;
+}
+
+.feature-icon-enhanced:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Button Magic Effects */
+.btn-magic {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-magic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.btn-magic:hover::before {
+    left: 100%;
+}
+
+.btn-magic:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Vietnamese Pagoda Animation */
+@keyframes pagodaSway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(1deg);
+    }
+    75% {
+        transform: rotate(-1deg);
+    }
+}
+
+.pagoda-animation {
+    animation: pagodaSway 4s ease-in-out infinite;
+}
+
+/* Heritage Site Reveal Animation */
+.heritage-reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.heritage-reveal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    transform: translateX(-100%);
+    transition: transform 0.8s ease-in-out;
+}
+
+.heritage-reveal.reveal::after {
+    transform: translateX(100%);
+}
+
+/* Numbers Count Animation */
+@keyframes numberCount {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.number-count {
+    animation: numberCount 0.8s ease-out;
+}
+
+/* Vietnamese Pattern Border Animation */
+.vietnamese-border {
+    position: relative;
+    overflow: hidden;
+}
+
+.vietnamese-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    animation: dragonWave 2s ease-in-out infinite;
+}
+
+/* Mascot Collection Enhanced */
+@keyframes mascotAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(180deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.mascot-appear {
+    animation: mascotAppear 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Navigation Enhancement */
+.navbar-brand {
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Progress Bar Magic */
+.progress-magic {
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-magic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: progressShine 2s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Floating Elements */
+.float-element {
+    animation: lanternFloat 3s ease-in-out infinite;
+}
+
+/* Page Transition */
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.page-transition.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Vietnamese Cultural Elements */
+.cultural-element {
+    transition: all 0.3s ease;
+}
+
+.cultural-element:hover {
+    animation: lanternGlow 2s ease-in-out infinite;
+}
+
+/* Staggered Animation for Lists */
+.stagger-animation {
+    opacity: 1; /* Show by default, hide only if animations are supported */
+    transform: translateY(0);
+    transition: all 0.6s ease-out;
+}
+
+/* Only hide if animations are supported */
+.js-animations-supported .stagger-animation {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stagger-animation.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay classes for staggered animations */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* Loading Screen Animation */
+@keyframes vietnameseSpinner {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.vietnamese-loader {
+    animation: vietnameseSpinner 1.5s ease-in-out infinite;
+    color: var(--primary-color);
+}
+
+/* Ticket Reveal Animation */
+@keyframes ticketReveal {
+    0% {
+        opacity: 0;
+        transform: rotateY(90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg);
+    }
+}
+
+.ticket-reveal {
+    animation: ticketReveal 0.6s ease-out;
+}
+
+/* Success Celebration */
+@keyframes celebrate {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.1) rotate(5deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    75% {
+        transform: scale(1.1) rotate(-5deg);
+    }
+}
+
+.celebrate {
+    animation: celebrate 0.8s ease-in-out;
+}
+
+/* Fade Out Animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive Animation Preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Social Links */
+.social-links a {
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--warning-color) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Ticket Styles */
+.ticket-item {
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.ticket-item:hover {
+    background-color: rgba(139, 38, 53, 0.05);
+    transform: translateX(5px);
+}
+
+.ticket-item.expired {
+    border-left-color: var(--danger-color);
+    opacity: 0.7;
+}
+
+.qr-code {
+    transition: all 0.3s ease;
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
+}
+
+/* Alert Small */
+.alert-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+/* Ticket Status Indicators */
+.ticket-status-active {
+    color: var(--success-color);
+}
+
+.ticket-status-expired {
+    color: var(--danger-color);
+}
+
+.ticket-status-used {
+    color: var(--secondary-color);
+}
+
+/* Mascot Collection Animations */
+.mascot-collection-animation {
+    position: relative;
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0,0,0);
+    }
+    40%, 43% {
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.mascot-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mascot-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.mascot-card:hover::before {
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.mascot-emoji {
+    transition: all 0.3s ease;
+}
+
+.mascot-card:hover .mascot-emoji {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Progress bar enhancements */
+.progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+.bg-gradient-success {
+    background: linear-gradient(90deg, var(--success-color), var(--info-color)) !important;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)) !important;
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(90deg, var(--warning-color), var(--accent-color)) !important;
+}
+
+/* Progress Page Enhancements */
+.stats-card {
+    background: var(--light-color);
+    border: 1px solid rgba(139, 38, 53, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(44, 24, 16, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.progress-enhanced {
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-enhanced .progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* Enhanced status bar */
+#main-progress-bar {
+    transition: width 1s ease-in-out;
+    border-radius: 3px;
+}
+
+/* Reward System Styles */
+.reward-animation {
+    position: relative;
+}
+
+@keyframes rewardBounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0,0,0) scale(1);
+    }
+    40%, 43% {
+        transform: translate3d(0, -30px, 0) scale(1.1);
+    }
+    70% {
+        transform: translate3d(0, -15px, 0) scale(1.05);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0) scale(1.02);
+    }
+}
+
+.reward-modal .modal-content {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.reward-modal .modal-header {
+    background: linear-gradient(135deg, #ffc107, #fd7e14) !important;
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #ffc107, #fd7e14) !important;
+}
+
+/* Reward notification styles */
+.reward-notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 10000;
+    min-width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+    animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Status Bar Styling */
+#visit-status {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Card Hover Effects */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--light-color);
+    border: 1px solid rgba(139, 38, 53, 0.1);
+    box-shadow: 0 4px 12px rgba(44, 24, 16, 0.08);
+}
+
+.card-body {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.card-title {
+    color: var(--dark-color);
+    margin-bottom: 0.75rem;
+    font-family: 'Crimson Text', 'Times New Roman', serif;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--info-color);
+}
+
+/* Badge Styling */
+.badge {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+}
+
+/* Button Group Styling */
+.btn-group .btn {
+    border-radius: 20px;
+    margin-left: 0.25rem;
+}
+
+.btn-group .btn:first-child {
+    margin-left: 0;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: auto;
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
+
+footer h5 {
+    color: var(--warning-color) !important;
+}
+
+footer p {
+    color: #adb5bd !important;
+}
+
+footer .text-muted {
+    color: #adb5bd !important;
+}
+
+footer .text-white {
+    color: #ffffff !important;
+}
+
+/* Utility Classes */
+.backdrop-blur {
+    backdrop-filter: blur(10px);
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Vietnamese-inspired typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', 'Times New Roman', serif;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    font-family: 'Crimson Text', 'Times New Roman', serif;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(44, 24, 16, 0.1);
+}
+
+/* Vietnamese cultural accent borders */
+.cultural-border {
+    border-top: 3px solid var(--secondary-color);
+    border-bottom: 1px solid var(--accent-color);
+    position: relative;
+}
+
+.cultural-border::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, var(--warning-color), var(--accent-color));
+}
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, var(--success-color), var(--info-color));
+}

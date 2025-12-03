@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Details - Vietnam Heritage Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Override Bootstrap colors to Vietnamese palette */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .bg-info {
+            background-color: var(--accent-color) !important;
+        }
+        
+        .btn-info {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-info:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-info {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-info:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        /* Make text white in primary colored elements */
+        .bg-primary,
+        section.bg-primary {
+            color: white !important;
+        }
+        
+        .bg-primary h1,
+        .bg-primary h2,
+        .bg-primary h3,
+        .bg-primary h4,
+        .bg-primary h5,
+        .bg-primary h6,
+        .bg-primary p,
+        .bg-primary span,
+        section.bg-primary h1,
+        section.bg-primary h2,
+        section.bg-primary h3,
+        section.bg-primary h4,
+        section.bg-primary h5,
+        section.bg-primary h6,
+        section.bg-primary p,
+        section.bg-primary span {
+            color: white !important;
+        }
+        
+        /* Original styles */
+        .hero-image {
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .action-buttons .btn {
+            margin: 0.5rem;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+        }
+        
+        .action-buttons {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .action-buttons .btn-lg {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+        }
+        
+        .mascot-card {
+            background: linear-gradient(135deg, #ffc107, #ff8c00);
+            border-radius: 15px;
+            color: white !important;
+            text-align: center;
+            padding: 2rem;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .mascot-card * {
+            color: white !important;
+        }
+        
+        .mascot-card h5,
+        .mascot-card h5 * {
+            color: white !important;
+        }
+        
+        .mascot-card p,
+        .mascot-card p * {
+            color: white !important;
+        }
+        
+        .mascot-card small,
+        .mascot-card small * {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .mascot-card .btn-light {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white !important;
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .mascot-card .btn-light:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mascot-card .alert-success {
+            background-color: rgba(25, 135, 84, 0.2);
+            border-color: rgba(25, 135, 84, 0.3);
+            color: white !important;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: none;
+            margin: 0;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .mascot-card .alert-success * {
+            color: white !important;
+        }
+        
+        .mascot-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ticket-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 15px;
+            color: white !important;
+            padding: 2rem;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .ticket-card * {
+            color: white !important;
+        }
+        
+        .ticket-card .btn {
+            color: white !important;
+        }
+        
+        .ticket-card .btn i {
+            color: white !important;
+        }
+        
+        .ticket-card h5,
+        .ticket-card h5 i {
+            color: white !important;
+        }
+        
+        .ticket-card .btn-warning {
+            background-color: rgba(255, 193, 7, 0.2);
+            border-color: rgba(255, 193, 7, 0.3);
+            color: white !important;
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .ticket-card .btn-warning:hover {
+            background-color: rgba(255, 193, 7, 0.3);
+            border-color: rgba(255, 193, 7, 0.4);
+            color: white !important;
+        }
+        
+        .ticket-card .btn-outline-light {
+            color: white !important;
+            border-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .ticket-card .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white !important;
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .price-discounted {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .visited-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #198754;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        /* Tour Guides Section - Ensure white text */
+        .card-header.bg-success {
+            color: white !important;
+        }
+        
+        .card-header.bg-success * {
+            color: white !important;
+        }
+        
+        .card-header.bg-success h6,
+        .card-header.bg-success h6 * {
+            color: white !important;
+        }
+        
+        .card-header.bg-success i {
+            color: white !important;
+        }
+        
+        .btn-success {
+            color: white !important;
+        }
+        
+        .btn-success * {
+            color: white !important;
+        }
+        
+        .btn-success i {
+            color: white !important;
+        }
+        
+        /* Progress Boxes - Ensure white text */
+        .bg-primary.text-white,
+        .bg-info.text-white,
+        .bg-success.text-white {
+            color: white !important;
+        }
+        
+        .bg-primary.text-white *,
+        .bg-info.text-white *,
+        .bg-success.text-white * {
+            color: white !important;
+        }
+        
+        .bg-primary.text-white h5,
+        .bg-info.text-white h5,
+        .bg-success.text-white h5 {
+            color: white !important;
+        }
+        
+        .bg-primary.text-white small,
+        .bg-info.text-white small,
+        .bg-success.text-white small {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        /* Fix modal positioning */
+        #successModal .modal-dialog {
+            margin-top: 100px !important;
+            margin-bottom: 100px !important;
+        }
+        
+        #successModal .modal-content {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                Vietnam Heritage Explorer
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Explore Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet.html">My Treasure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="progress.html">My Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="guides.html">Tour Guides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Back Button -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <a href="map.html" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i>
+                    Back to Map
+                </a>
+            </div>
+        </div>
+
+        <!-- Site Details -->
+        <div id="siteContent">
+            <div class="text-center p-5">
+                <div class="loading"></div>
+                <p class="mt-2 text-muted">Loading site details...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Success!
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center" id="successModalBody">
+                    <!-- Success message will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Great!</button>
+                    <a href="wallet.html" class="btn btn-outline-success">View My Collection</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/site-details.js"></script>
+    <script src="js/rewards.js"></script>
+</body>
+</html>

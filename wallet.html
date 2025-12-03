@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Treasure - Vietnam Heritage Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body.wallet-page-background {
+            background-color: var(--light-color);
+        }
+        .wallet-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 20px;
+            color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .wallet-card h1,
+        .wallet-card h2,
+        .wallet-card h3,
+        .wallet-card h4,
+        .wallet-card h5,
+        .wallet-card h6,
+        .wallet-card p,
+        .wallet-card small,
+        .wallet-card .lead {
+            color: white !important;
+        }
+        
+        .mascot-item {
+            background: var(--light-color);
+            border: 1px solid rgba(139, 38, 53, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(44, 24, 16, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .mascot-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mascot-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .ticket-item {
+            background: var(--light-color);
+            border: 1px solid rgba(139, 38, 53, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(44, 24, 16, 0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .qr-code {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px dashed var(--accent-color);
+            border-radius: 10px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+        
+        .stats-card {
+            background: var(--light-color);
+            border: 1px solid rgba(139, 38, 53, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(44, 24, 16, 0.1);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--info-color);
+        }
+        
+        /* Override Bootstrap nav-tabs blue colors */
+        .nav-tabs .nav-link {
+            color: var(--info-color);
+            border-color: transparent;
+            background-color: var(--light-color);
+            border: 1px solid rgba(139, 38, 53, 0.1);
+            margin-right: 0.25rem;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            color: var(--primary-color);
+            border-color: rgba(139, 38, 53, 0.2);
+            background-color: rgba(139, 38, 53, 0.05);
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: white;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .nav-tabs {
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        /* Override Bootstrap button blue colors */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        /* Override text-primary blue color */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .bg-info {
+            background-color: var(--accent-color) !important;
+        }
+        
+        .btn-info {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-info:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-info {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-info:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        /* Make text white in primary colored elements */
+        .bg-primary,
+        section.bg-primary {
+            color: white !important;
+        }
+        
+        .bg-primary h1,
+        .bg-primary h2,
+        .bg-primary h3,
+        .bg-primary h4,
+        .bg-primary h5,
+        .bg-primary h6,
+        .bg-primary p,
+        .bg-primary span,
+        section.bg-primary h1,
+        section.bg-primary h2,
+        section.bg-primary h3,
+        section.bg-primary h4,
+        section.bg-primary h5,
+        section.bg-primary h6,
+        section.bg-primary p,
+        section.bg-primary span {
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="wallet-page-background">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                Vietnam Heritage Explorer
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Explore Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="wallet.html">My Treasure</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="progress.html">My Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="guides.html">Tour Guides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Wallet Header -->
+        <div class="row">
+            <div class="col-12">
+                <div class="wallet-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="display-6 fw-bold mb-2">
+                                <i class="fas fa-gem me-3"></i>
+                                My Collection
+                            </h1>
+                            <p class="lead mb-0">Track your cultural journey and collected treasures</p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <div class="d-flex justify-content-around text-center">
+                                <div>
+                                    <h3 class="fw-bold mb-0" id="visitedCount">0</h3>
+                                    <small>Sites Visited</small>
+                                </div>
+                                <div>
+                                    <h3 class="fw-bold mb-0" id="mascotCount">0</h3>
+                                    <small>Mascots</small>
+                                </div>
+                                <div>
+                                    <h3 class="fw-bold mb-0" id="ticketCount">0</h3>
+                                    <small>Tickets</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <i class="fas fa-map-marker-alt fa-2x text-primary mb-2"></i>
+                    <h4 class="fw-bold" id="progressPercentage">0%</h4>
+                    <p class="text-muted mb-0">Journey Progress</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <i class="fas fa-trophy fa-2x text-warning mb-2"></i>
+                    <h4 class="fw-bold" id="achievementCount">0</h4>
+                    <p class="text-muted mb-0">Achievements</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <i class="fas fa-star fa-2x text-success mb-2"></i>
+                    <h4 class="fw-bold" id="totalPoints">0</h4>
+                    <p class="text-muted mb-0">Points Earned</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs nav-fill mb-4" id="walletTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="mascots-tab" data-bs-toggle="tab" data-bs-target="#mascots" type="button" role="tab">
+                    <i class="fas fa-gift me-2"></i>
+                    Mascots
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tickets-tab" data-bs-toggle="tab" data-bs-target="#tickets" type="button" role="tab">
+                    <i class="fas fa-ticket-alt me-2"></i>
+                    Tickets
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="visited-tab" data-bs-toggle="tab" data-bs-target="#visited" type="button" role="tab">
+                    <i class="fas fa-map-marked-alt me-2"></i>
+                    Visited Sites
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rewards-tab" data-bs-toggle="tab" data-bs-target="#rewards" type="button" role="tab">
+                    <i class="fas fa-trophy me-2"></i>
+                    Rewards
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="walletTabContent">
+            <!-- Mascots Tab -->
+            <div class="tab-pane fade show active" id="mascots" role="tabpanel">
+                <div class="row" id="mascotsGrid">
+                    <!-- Mascots will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Tickets Tab -->
+            <div class="tab-pane fade" id="tickets" role="tabpanel">
+                <div id="ticketsList">
+                    <!-- Tickets will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Visited Sites Tab -->
+            <div class="tab-pane fade" id="visited" role="tabpanel">
+                <div class="row" id="visitedSites">
+                    <!-- Visited sites will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Rewards Tab -->
+            <div class="tab-pane fade" id="rewards" role="tabpanel">
+                <div id="rewardsList">
+                    <!-- Rewards will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/rewards.js"></script>
+</body>
+</html>

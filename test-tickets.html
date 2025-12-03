@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket System Test - Vietnam Heritage Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Override Bootstrap colors to Vietnamese palette */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .bg-info {
+            background-color: var(--accent-color) !important;
+        }
+        
+        .btn-info {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-info:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-info {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-info:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-5 fw-bold text-primary mb-4">
+                    <i class="fas fa-vial me-3"></i>
+                    Complete System Test Suite
+                </h1>
+                <p class="lead">Testing All Use Cases: Tickets, Mascots, Progress, Rewards, and Tour Guides</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Test Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary" onclick="clearAllData()">
+                                <i class="fas fa-trash me-2"></i>
+                                Clear All Data
+                            </button>
+                            <button class="btn btn-outline-info" onclick="checkTicketStatus()">
+                                <i class="fas fa-info me-2"></i>
+                                Check Ticket Status
+                            </button>
+                            <a href="site-details.html?id=halong" class="btn btn-warning">
+                                <i class="fas fa-ticket-alt me-2"></i>
+                                Test Ticket Purchase (Ha Long Bay)
+                            </a>
+                            <a href="site-details.html?id=temple" class="btn btn-info">
+                                <i class="fas fa-gift me-2"></i>
+                                Test Mascot Collection (Temple)
+                            </a>
+                            <a href="progress.html" class="btn btn-success">
+                                <i class="fas fa-chart-line me-2"></i>
+                                Test Progress Tracking
+                            </a>
+                            <button class="btn btn-warning" onclick="testRewards()">
+                                <i class="fas fa-trophy me-2"></i>
+                                Test Rewards System
+                            </button>
+                            <a href="guides.html" class="btn btn-success">
+                                <i class="fas fa-user-friends me-2"></i>
+                                Test Tour Guides
+                            </a>
+                            <a href="wallet.html" class="btn btn-success">
+                                <i class="fas fa-wallet me-2"></i>
+                                View Wallet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Current Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="statusDisplay">
+                            <p class="text-muted">Click "Check Ticket Status" to see current data</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Use Case 2 Test Checklist</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">Required Features:</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i> User can select a cultural site</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> User sees ticket options and discount offers</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> User can click "Buy" button</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> System simulates payment processing</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> System issues digital ticket</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> Ticket appears in wallet</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">Enhanced Features:</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i> Duplicate ticket prevention</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> Loading states during purchase</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> Detailed success modal</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> QR code generation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> Ticket expiration dates</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> Ticket sharing functionality</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/rewards.js"></script>
+    <script>
+        function clearAllData() {
+            localStorage.removeItem('tickets');
+            localStorage.removeItem('visitedPlaces');
+            localStorage.removeItem('collectedMascots');
+            alert('All data cleared! You can now test the ticket purchase flow from scratch.');
+            checkTicketStatus();
+        }
+
+        function checkTicketStatus() {
+            const tickets = getTickets();
+            const visitedPlaces = getVisitedPlaces();
+            const mascots = getMascots();
+            
+            const statusDisplay = document.getElementById('statusDisplay');
+            statusDisplay.innerHTML = `
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <h4 class="text-primary">${tickets.length}</h4>
+                        <small class="text-muted">Tickets</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h4 class="text-success">${visitedPlaces.length}</h4>
+                        <small class="text-muted">Visited</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h4 class="text-warning">${mascots.length}</h4>
+                        <small class="text-muted">Mascots</small>
+                    </div>
+                </div>
+                ${tickets.length > 0 ? `
+                    <hr>
+                    <h6 class="fw-bold">Recent Tickets:</h6>
+                    ${tickets.slice(-3).map(ticket => `
+                        <div class="small mb-1">
+                            <i class="fas fa-ticket-alt text-primary me-2"></i>
+                            ${ticket.siteName} - ${formatPrice(ticket.discountPrice || ticket.price)}
+                        </div>
+                    `).join('')}
+                ` : ''}
+            `;
+        }
+
+        function testRewards() {
+            if (window.rewardsSystem) {
+                // Force check rewards
+                window.rewardsSystem.checkAndGrantRewards();
+                alert('Rewards system tested! Check for any reward notifications.');
+            } else {
+                alert('Rewards system not loaded. Please refresh the page.');
+            }
+        }
+
+        // Initialize status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkTicketStatus();
+        });
+    </script>
+</body>
+</html>

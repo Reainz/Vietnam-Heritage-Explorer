@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Map - Vietnam Heritage Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        #map {
+            height: 500px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .map-controls {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .distance-slider {
+            width: 100%;
+        }
+        
+        .site-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .site-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .site-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .site-card.selected {
+            border-color: var(--warning-color);
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+        
+        .distance-badge {
+            background: var(--info-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+        /* Ensure category badges match distance badges */
+        .site-card .badge {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 10px;
+        }
+        /* Override Bootstrap colors to Vietnamese palette */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .bg-info {
+            background-color: var(--accent-color) !important;
+        }
+        
+        .badge.bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-info {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-info:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-info {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-info:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        /* Make text white in primary colored elements */
+        .bg-primary,
+        .card-header.bg-primary {
+            color: white !important;
+        }
+        
+        .bg-primary h1,
+        .bg-primary h2,
+        .bg-primary h3,
+        .bg-primary h4,
+        .bg-primary h5,
+        .bg-primary h6,
+        .bg-primary p,
+        .bg-primary span,
+        .card-header.bg-primary h1,
+        .card-header.bg-primary h2,
+        .card-header.bg-primary h3,
+        .card-header.bg-primary h4,
+        .card-header.bg-primary h5,
+        .card-header.bg-primary h6,
+        .card-header.bg-primary p,
+        .card-header.bg-primary span {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                Vietnam Heritage Explorer
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="map.html">Explore Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet.html">My Treasure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="progress.html">My Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="guides.html">Tour Guides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-5 fw-bold text-primary mb-4">
+                    <i class="fas fa-map me-3"></i>
+                    Explore Cultural Heritage Sites
+                </h1>
+            </div>
+        </div>
+
+        <!-- Map Controls -->
+        <div class="row">
+            <div class="col-12">
+                <div class="map-controls">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <label for="locationSelect" class="form-label fw-bold">
+                                <i class="fas fa-map-marker-alt me-2"></i>
+                                Select Location
+                            </label>
+                            <select class="form-select" id="locationSelect">
+                                <option value="hanoi">Hanoi (Default)</option>
+                                <option value="hochiminh">Ho Chi Minh City</option>
+                                <option value="danang">Da Nang</option>
+                                <option value="hue">Hue</option>
+                                <option value="halong">Ha Long</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="distanceRange" class="form-label fw-bold">
+                                <i class="fas fa-ruler me-2"></i>
+                                Search Radius: <span id="distanceValue">50</span> km
+                            </label>
+                            <input type="range" class="form-range distance-slider" 
+                                   id="distanceRange" min="10" max="200" value="50" step="10">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-filter me-2"></i>
+                                Filter by Category
+                            </label>
+                            <select class="form-select" id="categoryFilter">
+                                <option value="all">All Categories</option>
+                                <option value="UNESCO Site">UNESCO Sites</option>
+                                <option value="Historic Town">Historic Towns</option>
+                                <option value="Cultural Site">Cultural Sites</option>
+                                <option value="Temple">Temples</option>
+                                <option value="Museum">Museums</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map and Site List -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <div id="map"></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-list me-2"></i>
+                            Heritage Sites (<span id="siteCount">0</span>)
+                        </h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="site-list" id="siteList">
+                            <div class="text-center p-4">
+                                <div class="loading"></div>
+                                <p class="mt-2 text-muted">Loading sites...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Details Modal -->
+    <div class="modal fade" id="siteModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="siteModalTitle">Site Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="siteModalBody">
+                    <!-- Site details will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="viewDetailsBtn">View Full Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/rewards.js"></script>
+</body>
+</html>

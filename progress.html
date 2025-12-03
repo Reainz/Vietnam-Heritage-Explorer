@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Progress - Vietnam Heritage Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        .progress-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 20px;
+            color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-card h1,
+        .progress-card h2,
+        .progress-card h3,
+        .progress-card h4,
+        .progress-card h5,
+        .progress-card h6,
+        .progress-card p,
+        .progress-card small,
+        .progress-card .lead {
+            color: white !important;
+        }
+        
+        .progress-ring {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .progress-ring svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring circle {
+            fill: none;
+            stroke-width: 8;
+        }
+        
+        .progress-ring .bg {
+            stroke: rgba(255, 255, 255, 0.2);
+        }
+        
+        .progress-ring .progress {
+            stroke: #ffc107;
+            stroke-linecap: round;
+            transition: stroke-dasharray 1s ease-in-out;
+        }
+        
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .region-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .region-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .site-checklist {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .site-item {
+            padding: 0.75rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .site-item.visited {
+            background: rgba(25, 135, 84, 0.1);
+            border-left: 4px solid #198754;
+        }
+        
+        .site-item.unvisited {
+            background: rgba(108, 117, 125, 0.1);
+            border-left: 4px solid #6c757d;
+        }
+        
+        .achievement-badge {
+            background: linear-gradient(135deg, #ffc107, #fd7e14);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .milestone-progress {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Override Bootstrap text colors to Vietnamese palette */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .text-info {
+            color: var(--accent-color) !important;
+        }
+        
+        /* Override Bootstrap button colors */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Override card header blue color */
+        .bg-info {
+            background-color: var(--accent-color) !important;
+        }
+        
+        /* Override progress bar blue color */
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .btn-info {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-info:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-info {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-info:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        /* Make text white in primary colored elements */
+        .bg-primary,
+        section.bg-primary {
+            color: white !important;
+        }
+        
+        .bg-primary h1,
+        .bg-primary h2,
+        .bg-primary h3,
+        .bg-primary h4,
+        .bg-primary h5,
+        .bg-primary h6,
+        .bg-primary p,
+        .bg-primary span,
+        section.bg-primary h1,
+        section.bg-primary h2,
+        section.bg-primary h3,
+        section.bg-primary h4,
+        section.bg-primary h5,
+        section.bg-primary h6,
+        section.bg-primary p,
+        section.bg-primary span {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                Vietnam Heritage Explorer
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Explore Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet.html">My Treasure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="progress.html">My Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="guides.html">Tour Guides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Progress Header -->
+        <div class="row">
+            <div class="col-12">
+                <div class="progress-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="display-6 fw-bold mb-2">
+                                <i class="fas fa-chart-line me-3"></i>
+                                My Exploration Progress
+                            </h1>
+                            <p class="lead mb-0">Track your journey through Vietnam's cultural heritage</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle class="bg" cx="60" cy="60" r="52"></circle>
+                                    <circle class="progress" cx="60" cy="60" r="52" id="progressCircle"></circle>
+                                </svg>
+                                <div class="progress-text" id="progressPercentage">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Stats -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <i class="fas fa-map-marker-alt fa-2x text-primary mb-2"></i>
+                    <h4 class="fw-bold" id="visitedCount">0</h4>
+                    <p class="text-muted mb-0">Sites Visited</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <i class="fas fa-gift fa-2x text-warning mb-2"></i>
+                    <h4 class="fw-bold" id="mascotCount">0</h4>
+                    <p class="text-muted mb-0">Mascots Collected</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <i class="fas fa-ticket-alt fa-2x text-success mb-2"></i>
+                    <h4 class="fw-bold" id="ticketCount">0</h4>
+                    <p class="text-muted mb-0">Tickets Purchased</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <i class="fas fa-star fa-2x text-info mb-2"></i>
+                    <h4 class="fw-bold" id="explorerPoints">0</h4>
+                    <p class="text-muted mb-0">Explorer Points</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="fw-bold mb-3">
+                    <i class="fas fa-trophy me-2 text-warning"></i>
+                    Achievements & Milestones
+                </h3>
+                <div id="achievementsContainer">
+                    <!-- Achievements will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Regional Progress -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="fw-bold mb-3">
+                    <i class="fas fa-map me-2 text-primary"></i>
+                    Regional Exploration Progress
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="region-card">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-building me-2 text-primary"></i>
+                        Northern Vietnam
+                    </h5>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <small>Progress</small>
+                            <small id="northProgress">0/0</small>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-primary" id="northProgressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="site-checklist" id="northernSites">
+                        <!-- Northern sites will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="region-card">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-mountain me-2 text-success"></i>
+                        Central & Southern Vietnam
+                    </h5>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <small>Progress</small>
+                            <small id="southProgress">0/0</small>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-success" id="southProgressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="site-checklist" id="southernSites">
+                        <!-- Southern sites will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-compass me-2"></i>
+                            Recommended Next Steps
+                        </h5>
+                    </div>
+                    <div class="card-body" id="recommendationsContainer">
+                        <!-- Recommendations will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/rewards.js"></script>
+</body>
+</html>

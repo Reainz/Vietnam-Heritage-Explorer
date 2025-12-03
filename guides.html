@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Guides - Vietnam Heritage Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        .guides-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 20px;
+            color: white !important;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+        }
+        .guides-hero *, .guides-hero h1, .guides-hero h3, .guides-hero p, .guides-hero small {
+            color: white !important;
+        }
+        
+        .guide-card {
+            background: var(--light-color);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(44, 24, 16, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            margin-bottom: 2rem;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+        }
+        
+        .guide-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .guide-rating {
+            color: var(--secondary-color);
+        }
+        
+        .guide-specialty {
+            background: rgba(139, 38, 53, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.25rem;
+            display: inline-block;
+        }
+        
+        .guide-stats {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .connect-btn {
+            background: linear-gradient(135deg, #198754, #20c997);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .connect-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(25, 135, 84, 0.4);
+            color: white;
+        }
+        
+        .filter-section {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .featured-guide {
+            border: 3px solid #ffc107;
+            position: relative;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #ffc107;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .guide-languages {
+            margin-top: 0.5rem;
+        }
+        
+        .language-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: 0.25rem;
+            border-radius: 2px;
+        }
+        
+        /* Override Bootstrap button colors to Vietnamese palette */
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .connect-btn {
+            background: linear-gradient(135deg, var(--success-color), var(--info-color)) !important;
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .connect-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(45, 80, 22, 0.4) !important;
+            color: white;
+            background: linear-gradient(135deg, var(--info-color), var(--success-color)) !important;
+        }
+        
+        /* Override guide stats numbers to be black instead of primary color */
+        .guide-stats .text-primary {
+            color: var(--dark-color) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                Vietnam Heritage Explorer
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Explore Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet.html">My Treasure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="progress.html">My Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="guides.html">Tour Guides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Hero Section -->
+        <div class="guides-hero">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-user-friends me-3"></i>
+                        Discover Local Tour Guides
+                    </h1>
+                    <p class="lead mb-0">
+                        Connect with experienced local guides who will bring Vietnam's cultural heritage to life. 
+                        Our certified guides offer authentic insights and personalized experiences.
+                    </p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <h3 class="fw-bold mb-0" id="totalGuides">0</h3>
+                            <small>Expert Guides</small>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-0">4.8★</h3>
+                            <small>Average Rating</small>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-0">15+</h3>
+                            <small>Languages</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Location
+                    </label>
+                    <select class="form-select" id="locationFilter">
+                        <option value="all">All Locations</option>
+                        <option value="hanoi">Hanoi</option>
+                        <option value="hochiminh">Ho Chi Minh City</option>
+                        <option value="danang">Da Nang</option>
+                        <option value="hue">Hue</option>
+                        <option value="halong">Ha Long</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">
+                        <i class="fas fa-tags me-2"></i>
+                        Specialty
+                    </label>
+                    <select class="form-select" id="specialtyFilter">
+                        <option value="all">All Specialties</option>
+                        <option value="history">Historical Sites</option>
+                        <option value="culture">Cultural Heritage</option>
+                        <option value="food">Food & Cuisine</option>
+                        <option value="nature">Nature & Landscapes</option>
+                        <option value="photography">Photography Tours</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">
+                        <i class="fas fa-language me-2"></i>
+                        Language
+                    </label>
+                    <select class="form-select" id="languageFilter">
+                        <option value="all">All Languages</option>
+                        <option value="english">English</option>
+                        <option value="french">French</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="korean">Korean</option>
+                        <option value="chinese">Chinese</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">
+                        <i class="fas fa-star me-2"></i>
+                        Rating
+                    </label>
+                    <select class="form-select" id="ratingFilter">
+                        <option value="all">All Ratings</option>
+                        <option value="5">5 Stars</option>
+                        <option value="4">4+ Stars</option>
+                        <option value="3">3+ Stars</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guides Grid -->
+        <div class="row g-5" id="guidesGrid">
+            <!-- Guides will be loaded here -->
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="text-center p-5" style="display: none;">
+            <i class="fas fa-search fa-4x text-muted mb-3"></i>
+            <h4>No guides found</h4>
+            <p class="text-muted">Try adjusting your filters to find more tour guides.</p>
+            <button class="btn btn-primary" onclick="clearFilters()">
+                <i class="fas fa-refresh me-2"></i>
+                Clear Filters
+            </button>
+        </div>
+    </div>
+
+    <!-- Connect Modal -->
+    <div class="modal fade" id="connectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-handshake me-2"></i>
+                        Connect with Tour Guide
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="connectModalBody">
+                    <!-- Guide connection details will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="confirmConnection()">
+                        <i class="fas fa-phone me-2"></i>
+                        Contact Guide
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/guides.js"></script>
+    <script src="js/rewards.js"></script>
+</body>
+</html>

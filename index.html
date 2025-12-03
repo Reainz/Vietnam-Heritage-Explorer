@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnam Heritage Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Override Bootstrap colors to Vietnamese palette for home page */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .bg-info {
+            background-color: var(--accent-color) !important;
+        }
+        
+        .badge.bg-info {
+            background-color: var(--accent-color) !important;
+        }
+        
+        /* Make text white in primary colored elements */
+        .bg-primary,
+        section.bg-primary {
+            color: white !important;
+        }
+        
+        .bg-primary h1,
+        .bg-primary h2,
+        .bg-primary h3,
+        .bg-primary h4,
+        .bg-primary h5,
+        .bg-primary h6,
+        .bg-primary p,
+        .bg-primary span,
+        section.bg-primary h1,
+        section.bg-primary h2,
+        section.bg-primary h3,
+        section.bg-primary h4,
+        section.bg-primary h5,
+        section.bg-primary h6,
+        section.bg-primary p,
+        section.bg-primary span {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-map-marked-alt me-2"></i>
+                Vietnam Heritage Explorer
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Explore Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wallet.html">My Treasure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="progress.html">My Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="guides.html">Tour Guides</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="row align-items-center" style="min-height: 80vh;">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold text-white mb-4">
+                            Discover Vietnam's Cultural Heritage
+                        </h1>
+                        <p class="lead text-white mb-4">
+                            Explore ancient temples, historic sites, and cultural treasures. 
+                            Collect unique mascots and connect with local guides on your journey 
+                            through Vietnam's rich heritage.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="map.html" class="btn btn-warning btn-lg px-4">
+                                <i class="fas fa-map me-2"></i>
+                                Browse Culture Places
+                            </a>
+                                                         <a href="wallet.html" class="btn btn-outline-light btn-lg px-4">
+                                 <i class="fas fa-gem me-2"></i>
+                                 View Treasure Chest
+                             </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <div class="hero-stats bg-white bg-opacity-10 backdrop-blur rounded-4 p-4 mt-4">
+                            <div class="row text-white">
+                                <div class="col-4">
+                                    <h3 class="fw-bold" id="totalSites" data-count="8">8</h3>
+                                    <p class="mb-0">Heritage Sites</p>
+                                </div>
+                                <div class="col-4">
+                                    <h3 class="fw-bold" id="collectedMascots" data-count="0">0</h3>
+                                    <p class="mb-0">Your Mascots</p>
+                                </div>
+                                <div class="col-4">
+                                    <h3 class="fw-bold" id="visitProgress">0%</h3>
+                                    <p class="mb-0">Explored</p>
+                                </div>
+                            </div>
+                            <div class="mt-3" id="mascotPreview">
+                                <small class="text-white-50">Start collecting mascots by visiting heritage sites!</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- How It Works Section -->
+    <section class="py-4">
+        <div class="container">
+            <div class="text-center mb-5 animate-on-scroll">
+                <h2 class="display-5 fw-bold text-primary">How It Works</h2>
+                <p class="lead text-muted">Start your cultural journey in 3 simple steps</p>
+            </div>
+            
+            <div class="row g-4 stagger-container">
+                <div class="col-lg-4 text-center stagger-animation">
+                    <div class="feature-icon bg-primary text-white rounded-circle mx-auto mb-3">
+                        <i class="fas fa-search fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold">1. Explore</h4>
+                    <p class="text-muted">
+                        Browse our interactive map to discover cultural heritage sites 
+                        near you or in your desired destination.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center stagger-animation">
+                    <div class="feature-icon bg-warning text-white rounded-circle mx-auto mb-3">
+                        <i class="fas fa-ticket-alt fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold">2. Visit</h4>
+                    <p class="text-muted">
+                        Purchase tickets at discounted rates and visit the sites. 
+                        Connect with local tour guides for authentic experiences.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center stagger-animation">
+                    <div class="feature-icon bg-success text-white rounded-circle mx-auto mb-3">
+                        <i class="fas fa-trophy fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold">3. Collect</h4>
+                    <p class="text-muted">
+                        Earn unique mascots and rewards for each site you visit. 
+                        Build your collection and share your journey.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Guides Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-primary">Connect with Local Experts</h2>
+                <p class="lead text-muted">Discover Vietnam's heritage with certified local tour guides</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 text-center">
+                    <div class="feature-icon bg-success text-white rounded-circle mx-auto mb-3">
+                        <i class="fas fa-user-graduate fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold">Expert Guides</h4>
+                    <p class="text-muted">
+                        Certified local guides with deep knowledge of Vietnam's 
+                        cultural heritage and authentic stories.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="feature-icon bg-info text-white rounded-circle mx-auto mb-3">
+                        <i class="fas fa-language fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold">Multiple Languages</h4>
+                    <p class="text-muted">
+                        Guides speaking English, French, Japanese, Korean, 
+                        Chinese, and more for international visitors.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="feature-icon bg-warning text-white rounded-circle mx-auto mb-3">
+                        <i class="fas fa-handshake fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold">Easy Connection</h4>
+                    <p class="text-muted">
+                        Simple one-click connection process to find and 
+                        contact the perfect guide for your journey.
+                    </p>
+                </div>
+            </div>
+            
+                         <div class="text-center mt-5">
+                 <a href="guides.html" class="btn btn-primary btn-lg px-5">
+                     <i class="fas fa-user-friends me-2"></i>
+                     Find Your Guide
+                 </a>
+             </div>
+        </div>
+    </section>
+
+    <!-- Status Bar -->
+    <section class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-chart-line fa-2x me-3"></i>
+                        <div>
+                            <h5 class="mb-1">Your Journey Progress</h5>
+                            <p class="mb-0" id="visit-status">You have visited 0 places</p>
+                            <div class="progress mt-2" style="height: 6px; width: 200px;">
+                                <div class="progress-bar bg-warning" id="main-progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="d-flex gap-2 justify-content-md-end">
+                        <a href="progress.html" class="btn btn-outline-light">
+                            <i class="fas fa-chart-line me-2"></i>
+                            View Progress
+                        </a>
+                        <a href="wallet.html" class="btn btn-warning">
+                            <i class="fas fa-wallet me-2"></i>
+                            My Collection
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold">Vietnam Heritage Explorer</h5>
+                    <p class="text-muted">
+                        Preserving and promoting Vietnam's cultural heritage through 
+                        innovative digital experiences.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                    <p class="text-muted mt-2 mb-0">
+                        &copy; 2025 Vietnam Heritage Explorer. Built with ❤️ for cultural preservation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/rewards.js"></script>
+</body>
+</html>

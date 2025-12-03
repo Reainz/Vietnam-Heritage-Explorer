@@ -1,0 +1,25 @@
+this is our hackathon project, [Challenge Statement
+Over the past two weeks, you have embarked on a journey to deeply explore Vietnam's cultural and heritage ecosystem. Through Milestone 1, you identified a topic of interest, and with Milestone 2, you immersed yourselves in real contexts: visiting places, observing daily life, engaging with locals, and capturing authentic stories through images, videos, and field notes. These experiences now serve as the foundation for your next challenge.
+
+From 08:00 on August 1, 2025, the true test begins:
+Your task is to design an innovative solution that contributes to the preservation, promotion, and sustainable growth of Vietnam's cultural and heritage values that you have researched and experienced for the last two weeks. This solution should:
+
+Elevate value in meaningful ways: Strengthen cultural authenticity, experiential engagement, and social cohesion, grounded in heritage science research as key dimensions of cultural value (Min et al., 2025; Hussein & Alhebsi, 2025).
+Ensure economic viability: Build sustainability through revenue generation, job creation, and adaptive reuse, supported by studies linking heritage-led development to economic growth (Hussein & Alhebsi, 2025; PlaceEconomics, 2024).
+Create community impact: Reinforce identity, empower local stakeholders, and promote participatory management, based on evidence that community-driven heritage models foster lasting social impact (UNESCO, 2024; Min et al., 2025).
+Leverage technology effectively: Integrate digital tools or develop innovative solutions that enhance cultural preservation, promotion, and accessibility, aligning with global trends in heritage digitization and smart technologies (e.g., AR/VR, AI, digital archives) as highlighted by UNESCO and heritage technology studies.
+Engage and immerse Gen Z: Foster active participation, empathy, and ownership among younger generations through approaches proven to resonate with Gen Z, such as interactive platforms, gamification, social media-driven campaigns, and co-creation, to ensure cultural continuity and future stewardship.
+
+Importantly, this challenge is not attached to any single field of culture or heritage. You are free to pursue any area that aligns with your insights and passion.
+
+Over the next 28 hours, your team will:
+
+Define the user and reframe the challenge through a human-centered lens, grounded in your fieldwork. It is highly recommended that your submission include a concise statement of intent and a well-defined problem statement.
+Develop an innovative solution, articulating its value proposition and how it harnesses technology.
+Build a sustainable development and operational model that delivers economic, social, and cultural impact, involving key stakeholders and culture holders, with clear plans for finance, people, and long-term support.
+Prototype and present, bringing your vision to life through a clear, actionable demonstration.
+This is your opportunity to turn insights into action. Think boldly, design responsibly, and build solutions that honor Vietnam's cultural legacy while empowering future generations to carry it forward.
+
+[Grading Rubrics section with detailed scoring criteria for Innovation (30 points), Impact (20 points), Realism/Usefulness (20 points), Business Value (20 points), and Presentation Skills (10 points)]
+
+we wont make AR, VR, 3D due to our time limitation. we want to make the project which should be easy to implement cause we only have one day limitation [for example, if it is the mobile app or heavy weight web, we wont be able to complete that on time], project should be simple but impactful, unique, effective and meaningful, interesting to use, good for business + education + cultural purposes, and meet all the criteria successfully. should we make web, web app or mobile app, i think making web is the easier.
