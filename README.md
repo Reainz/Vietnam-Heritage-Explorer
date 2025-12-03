@@ -95,38 +95,6 @@ vietnam-heritage-explorer/
 - Advanced gamification
 - Mobile app development
 
-## 🏆 Hackathon Criteria Alignment
-
-### Innovation (30 points)
-- ✅ Novel concept blending traditional and modern elements
-- ✅ Appropriate technology selection for rapid prototyping
-- ✅ Central role of web technology in user experience
-- ✅ Interactive prototype with visual demonstrations
-
-### Impact (20 points)
-- ✅ Clear cultural preservation and promotion goals
-- ✅ Educational value through heritage site information
-- ✅ Community engagement through local guide connections
-- ✅ Measurable user engagement metrics
-
-### Feasibility (20 points)
-- ✅ Realistic implementation timeline (12 hours)
-- ✅ Simple tech stack for rapid development
-- ✅ Scalable architecture for future growth
-- ✅ Clear business model with revenue streams
-
-### Business Model (20 points)
-- ✅ Multiple revenue streams (tickets, guide commissions)
-- ✅ Sustainable growth through gamification
-- ✅ Community stakeholder empowerment
-- ✅ Long-term cultural preservation impact
-
-### Presentation (10 points)
-- ✅ Clear, engaging visual design
-- ✅ Structured information flow
-- ✅ Professional presentation-ready interface
-- ✅ Compelling storytelling elements
-
 ## 📄 License
 
 This project is developed for educational and hackathon purposes. All cultural content and images are used for demonstration purposes only.
